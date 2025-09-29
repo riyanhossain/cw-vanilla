@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embedded Chat Widget Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .example-section {
+        margin: 30px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-left: 4px solid #007bff;
+        border-radius: 4px;
+      }
+      code {
+        background: #e9ecef;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: "Courier New", monospace;
+      }
+      .code-block {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Chat Widget Integration Example</h1>
+        <p>
+          This page demonstrates how to embed the chat widget into any website.
+        </p>
+      </div>
+
+      <div class="example-section">
+        <h2>📝 Basic Integration</h2>
+        <p>The simplest way to add the chat widget to your website:</p>
+        <div class="code-block">
+          &lt;script src="https://your-domain.pages.dev/chat-widget.umd.cjs"
+          data-auto-load="true"&gt;&lt;/script&gt;
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h2>⚙️ Custom Configuration</h2>
+        <p>You can customize the widget using data attributes:</p>
+        <div class="code-block">
+          &lt;script src="https://your-domain.pages.dev/chat-widget.umd.cjs"
+          data-auto-load="true" data-title="Customer Support"
+          data-primary-color="#28a745" data-position="bottom-left"
+          data-welcome-message="Hello! How can we help you today?"
+          data-placeholder="Type your question..." data-width="350"
+          data-height="500" &gt;&lt;/script&gt;
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h2>🎯 JavaScript API</h2>
+        <p>For programmatic control:</p>
+        <div class="code-block">
+          &lt;script
+          src="https://your-domain.pages.dev/chat-widget.umd.cjs"&gt;&lt;/script&gt;
+          &lt;script&gt; // Manual initialization const widget = new
+          ChatWidget({ title: 'Help Center', primaryColor: '#6f42c1',
+          apiEndpoint: 'https://api.example.com/chat' }); // Control the widget
+          document.getElementById('open-chat').onclick = () =&gt; widget.open();
+          document.getElementById('close-chat').onclick = () =&gt;
+          widget.close(); &lt;/script&gt;
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h2>✅ Live Demo</h2>
+        <p>
+          The chat widget is active on this page! Look for the blue chat button
+          in the bottom-right corner.
+        </p>
+        <p><strong>Features demonstrated:</strong></p>
+        <ul>
+          <li>✨ Smooth animations and transitions</li>
+          <li>💬 Interactive messaging with typing indicators</li>
+          <li>💾 Persistent chat history (stored in localStorage)</li>
+          <li>📱 Mobile-responsive design</li>
+          <li>🎨 Customizable appearance</li>
+        </ul>
+      </div>
+
+      <footer
+        style="
+          margin-top: 50px;
+          text-align: center;
+          color: #666;
+          border-top: 1px solid #eee;
+          padding-top: 20px;
+        "
+      >
+        <p>
+          Chat Widget v1.0 - Built for easy embedding and Cloudflare hosting
+        </p>
+      </footer>
+    </div>
+
+    <!-- This is how you would embed the widget in production -->
+    <!-- For local development, we're using the dev server version -->
+    <script>
+      // Since we're in development, let's manually initialize the widget
+      // In production, you would use the built UMD file
+      if (typeof ChatWidget === "undefined") {
+        // Load from the local development server
+        import("/src/widget.ts").then((module) => {
+          const widget = new module.ChatWidget({
+            title: "💬 Support Chat",
+            primaryColor: "#28a745",
+            position: "bottom-right",
+            welcomeMessage:
+              "Hello! This is a live demo of the chat widget. Try sending me a message!",
+            placeholder: "Type your message here...",
+            width: 320,
+            height: 450,
+          });
+
+          // Make it globally accessible for testing
+          window.demoWidget = widget;
+          console.log("✅ Demo widget loaded! Try: window.demoWidget.open()");
+        });
+      }
+    </script>
+  </body>
+</html>
