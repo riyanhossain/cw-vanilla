@@ -21,7 +21,7 @@ async function autoInit() {
 
   // Make ChatWidget globally available with enhanced API
   window.ChatWidget = Object.assign(ChatWidget, {
-    init: (config?: ChatWidgetConfig) => new ChatWidget(config)
+    init: (config?: ChatWidgetConfig) => new ChatWidget(config),
   });
 
   // Look for auto-initialization via script tag data attributes
@@ -97,6 +97,6 @@ autoInit();
 // For immediate use in script tags (non-module)
 if (typeof window !== "undefined") {
   window.ChatWidget = Object.assign(ChatWidget, {
-    init: (config?: ChatWidgetConfig) => new ChatWidget(config)
+    init: (config?: ChatWidgetConfig) => new ChatWidget(config),
   });
 }

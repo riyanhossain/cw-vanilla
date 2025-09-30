@@ -1,7 +1,7 @@
 # Chat Widget - Single JS File
 
-A complete, embeddable chat     script.src = 'https://cw-vanilla.pages.dev/chat-widget.js';
-    script.type = 'module';idget bundled into a single JavaScript file with no external dependencies.
+A complete, embeddable chat script.src = 'https://cw-vanilla.pages.dev/chat-widget.js';
+script.type = 'module';idget bundled into a single JavaScript file with no external dependencies.
 
 ## 🎯 Features
 
@@ -19,7 +19,10 @@ A complete, embeddable chat     script.src = 'https://cw-vanilla.pages.dev/chat-
 
 ```html
 <!-- Single script tag with ES modules -->
-<script type="module" src="https://cw-vanilla.pages.dev/chat-widget.js"></script>
+<script
+  type="module"
+  src="https://cw-vanilla.pages.dev/chat-widget.js"
+></script>
 
 <script>
   // Initialize the widget

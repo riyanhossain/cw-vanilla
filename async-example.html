@@ -77,10 +77,11 @@
       <div class="code-block">
         &lt;script&gt; // Load the widget asynchronously (function() { const
         script = document.createElement('script'); script.src =
-        './dist/chat-widget.js'; script.type = 'module'; script.async = true; script.onload =
-        function() { // Initialize after loading window.ChatWidget.init({
-        primaryColor: '#28a745', title: 'Async Chat', position: 'bottom-left'
-        }); }; document.head.appendChild(script); })(); &lt;/script&gt;
+        './dist/chat-widget.js'; script.type = 'module'; script.async = true;
+        script.onload = function() { // Initialize after loading
+        window.ChatWidget.init({ primaryColor: '#28a745', title: 'Async Chat',
+        position: 'bottom-left' }); }; document.head.appendChild(script); })();
+        &lt;/script&gt;
       </div>
 
       <h3>2. Dynamic Import (Modern)</h3>
@@ -94,9 +95,9 @@
 
       <h3>3. Data Attribute Auto-initialization</h3>
       <div class="code-block">
-        &lt;script type="module" src="./dist/chat-widget.js" data-auto-load="true"
-        data-primary-color="#6f42c1" data-title="Auto Chat"
-        data-position="bottom-right"&gt; &lt;/script&gt;
+        &lt;script type="module" src="./dist/chat-widget.js"
+        data-auto-load="true" data-primary-color="#6f42c1" data-title="Auto
+        Chat" data-position="bottom-right"&gt; &lt;/script&gt;
       </div>
 
       <div id="status" class="loading">Loading widget...</div>
@@ -122,7 +123,7 @@
       // Load the widget asynchronously
       (function () {
         const script = document.createElement("script");
-        script.src = "./dist/chat-widget.js"; 
+        script.src = "./dist/chat-widget.js";
         script.type = "module";
         script.async = true;
         script.onload = function () {
