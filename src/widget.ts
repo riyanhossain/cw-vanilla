@@ -13,7 +13,7 @@ declare global {
 }
 
 // Auto-initialize if script is loaded with data attributes
-function autoInit() {
+async function autoInit() {
   // Check if we're in a browser environment
   if (typeof window === "undefined") return;
 
@@ -24,23 +24,24 @@ function autoInit() {
   // Search for various script patterns to handle different CDN URLs
   const scriptSelectors = [
     'script[src*="chat-widget"]',
-    'script[data-chat-widget]',
-    'script[src*="cw-vanilla.pages.dev"]'
+    "script[data-chat-widget]",
+    'script[src*="cw-vanilla.pages.dev"]',
   ];
-  
+
   let script: HTMLScriptElement | null = null;
   for (const selector of scriptSelectors) {
     script = document.querySelector(selector) as HTMLScriptElement;
     if (script) break;
   }
-  
+
   // Also try to find the current script by looking at all scripts
   if (!script) {
-    const scripts = document.querySelectorAll('script[src]');
-    script = Array.from(scripts).find(s => 
-      s.getAttribute('src')?.includes('chat-widget') ||
-      s.getAttribute('src')?.includes('cw-vanilla.pages.dev') ||
-      s.hasAttribute('data-auto-load')
+    const scripts = document.querySelectorAll("script[src]");
+    script = Array.from(scripts).find(
+      (s) =>
+        s.getAttribute("src")?.includes("chat-widget") ||
+        s.getAttribute("src")?.includes("cw-vanilla.pages.dev") ||
+        s.hasAttribute("data-auto-load")
     ) as HTMLScriptElement;
   }
 
@@ -50,14 +51,14 @@ function autoInit() {
     if (autoLoad === "true" || autoLoad === "") {
       // Wait for DOM to be ready
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeWidget);
+        document.addEventListener("DOMContentLoaded", () => initializeWidget());
       } else {
-        initializeWidget();
+        await initializeWidget();
       }
     }
   }
 
-  function initializeWidget() {
+  async function initializeWidget() {
     if (!script) return;
 
     const config: ChatWidgetConfig = {

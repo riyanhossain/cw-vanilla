@@ -11,8 +11,14 @@ export default defineConfig({
     rollupOptions: {
       output: {
         inlineDynamicImports: true,
+        // No separate CSS file, everything inlined into JS
+        assetFileNames: () => {
+          return '[name].[hash][extname]';
+        },
       },
     },
+    // Important: this inlines CSS into the JS bundle
+    cssCodeSplit: false,
     minify: "terser",
   },
 });

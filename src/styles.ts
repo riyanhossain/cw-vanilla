@@ -1,4 +1,5 @@
-/* Chat Widget Styles */
+// CSS styles as a JavaScript string for inline injection
+export const WIDGET_CSS = `/* Chat Widget Styles */
 .chat-widget {
   position: fixed;
   z-index: 9999;
@@ -345,3 +346,4 @@
     transform: none;
   }
 }
+`;
