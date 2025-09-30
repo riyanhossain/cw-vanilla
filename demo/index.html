@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Widget</title>
+  </head>
+  <body>
+    <div id="chat-widget">
+      <div id="chat-header">
+        <h2>Chat with us!</h2>
+      </div>
+      <div id="chat-body">
+        <div id="messages"></div>
+        <input type="text" id="user-input" placeholder="Type your message..." />
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://cw-vanilla.pages.dev/chat-widget.js"
+    ></script>
+
+    <script>
+      // Initialize the widget
+      window.ChatWidget.init({
+        primaryColor: "#3b82f6",
+        title: "Support Chat",
+        placeholder: "Type your message...",
+        position: "bottom-right",
+        width: 350,
+        height: 500,
+        welcomeMessage: "Hello! How can I help you today? 👋",
+      });
+    </script>
+  </body>
+</html>
