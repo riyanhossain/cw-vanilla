@@ -6,7 +6,7 @@ export default defineConfig({
       entry: "./src/widget.ts",
       name: "ChatWidget",
       fileName: "chat-widget",
-      formats: ["umd"],
+      formats: ["es"],
     },
     rollupOptions: {
       output: {

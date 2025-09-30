@@ -90,7 +90,8 @@
         <h3>Method 2: Auto-initialization</h3>
         <div class="code">
           &lt;!-- Auto-initialize with data attributes --&gt; &lt;script
-          src="https://your-domain.pages.dev/chat-widget.umd.cjs"
+          type="module"
+          src="https://your-domain.pages.dev/chat-widget.js"
           data-auto-load="true" data-primary-color="#6366f1" data-title="Support
           Chat" data-placeholder="Ask us anything..."
           data-position="bottom-right" data-width="350" data-height="500"
@@ -104,7 +105,7 @@
         <div class="code">
           &lt;script&gt; // Load widget asynchronously (function() { const
           script = document.createElement('script'); script.src =
-          'https://your-domain.pages.dev/chat-widget.umd.cjs'; script.async =
+          'https://your-domain.pages.dev/chat-widget.js'; script.type = 'module'; script.async =
           true; script.onload = function() { window.ChatWidget.init({
           primaryColor: '#10b981', title: 'Async Chat', position: 'bottom-left'
           }); }; document.head.appendChild(script); })(); &lt;/script&gt;
@@ -146,7 +147,7 @@
     </div>
 
     <!-- Load our single JS file -->
-    <script src="./dist/chat-widget.umd.cjs"></script>
+    <script type="module" src="./dist/chat-widget.js"></script>
 
     <script>
       // Initialize the widget

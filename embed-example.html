@@ -71,7 +71,7 @@
         <h2>⚙️ Custom Configuration</h2>
         <p>You can customize the widget using data attributes:</p>
         <div class="code-block">
-          &lt;script src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
+          &lt;script type="module" src="https://cw-vanilla.pages.dev/chat-widget.js"
           data-auto-load="true" data-title="Customer Support"
           data-primary-color="#28a745" data-position="bottom-left"
           data-welcome-message="Hello! How can we help you today?"
@@ -84,8 +84,8 @@
         <h2>🎯 JavaScript API</h2>
         <p>For programmatic control:</p>
         <div class="code-block">
-          &lt;script
-          src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"&gt;&lt;/script&gt;
+          &lt;script type="module"
+          src="https://cw-vanilla.pages.dev/chat-widget.js"&gt;&lt;/script&gt;
           &lt;script&gt; // Manual initialization with static method const
           widget = window.ChatWidget.init({ title: 'Help Center', primaryColor:
           '#6f42c1', apiEndpoint: 'https://api.example.com/chat' });

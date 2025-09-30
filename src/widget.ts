@@ -8,7 +8,9 @@ export type { ChatWidgetConfig, ChatMessage, ChatWidgetAPI } from "./types";
 // Global interface for browser environments
 declare global {
   interface Window {
-    ChatWidget: typeof ChatWidget;
+    ChatWidget: typeof ChatWidget & {
+      init: (config?: ChatWidgetConfig) => ChatWidget;
+    };
   }
 }
 
@@ -17,8 +19,10 @@ async function autoInit() {
   // Check if we're in a browser environment
   if (typeof window === "undefined") return;
 
-  // Make ChatWidget globally available
-  window.ChatWidget = ChatWidget;
+  // Make ChatWidget globally available with enhanced API
+  window.ChatWidget = Object.assign(ChatWidget, {
+    init: (config?: ChatWidgetConfig) => new ChatWidget(config)
+  });
 
   // Look for auto-initialization via script tag data attributes
   // Search for various script patterns to handle different CDN URLs
@@ -89,3 +93,10 @@ async function autoInit() {
 
 // Initialize when script loads
 autoInit();
+
+// For immediate use in script tags (non-module)
+if (typeof window !== "undefined") {
+  window.ChatWidget = Object.assign(ChatWidget, {
+    init: (config?: ChatWidgetConfig) => new ChatWidget(config)
+  });
+}

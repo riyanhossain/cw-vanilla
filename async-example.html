@@ -77,7 +77,7 @@
       <div class="code-block">
         &lt;script&gt; // Load the widget asynchronously (function() { const
         script = document.createElement('script'); script.src =
-        './dist/chat-widget.umd.cjs'; script.async = true; script.onload =
+        './dist/chat-widget.js'; script.type = 'module'; script.async = true; script.onload =
         function() { // Initialize after loading window.ChatWidget.init({
         primaryColor: '#28a745', title: 'Async Chat', position: 'bottom-left'
         }); }; document.head.appendChild(script); })(); &lt;/script&gt;
@@ -86,7 +86,7 @@
       <h3>2. Dynamic Import (Modern)</h3>
       <div class="code-block">
         &lt;script type="module"&gt; async function loadChatWidget() { try {
-        const { ChatWidget } = await import('./dist/chat-widget.umd.cjs');
+        const { ChatWidget } = await import('./dist/chat-widget.js');
         ChatWidget.init({ primaryColor: '#dc3545', title: 'Modern Chat' }); }
         catch (error) { console.error('Failed to load chat widget:', error); } }
         loadChatWidget(); &lt;/script&gt;
@@ -94,7 +94,7 @@
 
       <h3>3. Data Attribute Auto-initialization</h3>
       <div class="code-block">
-        &lt;script src="./dist/chat-widget.umd.cjs" data-auto-load="true"
+        &lt;script type="module" src="./dist/chat-widget.js" data-auto-load="true"
         data-primary-color="#6f42c1" data-title="Auto Chat"
         data-position="bottom-right"&gt; &lt;/script&gt;
       </div>
@@ -122,7 +122,8 @@
       // Load the widget asynchronously
       (function () {
         const script = document.createElement("script");
-        script.src = "./dist/chat-widget.umd.cjs";
+        script.src = "./dist/chat-widget.js"; 
+        script.type = "module";
         script.async = true;
         script.onload = function () {
           widgetLoaded = true;

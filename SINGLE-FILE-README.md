@@ -1,6 +1,7 @@
 # Chat Widget - Single JS File
 
-A complete, embeddable chat widget bundled into a single JavaScript file with no external dependencies.
+A complete, embeddable chat     script.src = 'https://cw-vanilla.pages.dev/chat-widget.js';
+    script.type = 'module';idget bundled into a single JavaScript file with no external dependencies.
 
 ## 🎯 Features
 
@@ -17,8 +18,8 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
 ### Method 1: Basic Usage
 
 ```html
-<!-- Single script tag -->
-<script src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"></script>
+<!-- Single script tag with ES modules -->
+<script type="module" src="https://cw-vanilla.pages.dev/chat-widget.js"></script>
 
 <script>
   // Initialize the widget
@@ -39,7 +40,8 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
 ```html
 <!-- Configure via data attributes -->
 <script
-  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
+  type="module"
+  src="https://cw-vanilla.pages.dev/chat-widget.js"
   data-auto-load="true"
   data-primary-color="#6366f1"
   data-title="Support Chat"
@@ -104,7 +106,7 @@ For auto-initialization, you can use these data attributes:
 
 ## 📊 Bundle Details
 
-- **Total Size**: 15.55 kB (4.71 kB gzipped)
+- **Total Size**: 19.25 kB (5.14 kB gzipped)
 - **Includes**:
   - Complete TypeScript chat functionality
   - All CSS styles (4.39 kB)
@@ -119,7 +121,7 @@ For auto-initialization, you can use these data attributes:
 The widget is deployed to Cloudflare Pages at:
 
 ```
-https://cw-vanilla.pages.dev/chat-widget.umd.cjs
+https://cw-vanilla.pages.dev/chat-widget.js
 ```
 
 ## 🧪 Local Testing
