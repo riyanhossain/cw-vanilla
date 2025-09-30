@@ -139,12 +139,15 @@
           <div class="feature-item">
             <h3>🔌 Easy Integration</h3>
             <p>
-              Just one script tag - no complex setup or dependencies required.
+              ES module format with multiple loading options - no complex setup
+              required.
             </p>
           </div>
           <div class="feature-item">
             <h3>⚡ Lightweight</h3>
-            <p>Minimal footprint with efficient loading and performance.</p>
+            <p>
+              Single 19.25 kB file (5.14 kB gzipped) with CSS bundled inline.
+            </p>
           </div>
           <div class="feature-item">
             <h3>🌐 API Ready</h3>
@@ -163,47 +166,38 @@
         </p>
 
         <div class="button-demo">
-          <button
-            class="btn btn-primary"
-            onclick="window.chatWidgetInstance?.open()"
-          >
-            Open Chat
+          <button class="btn btn-primary" onclick="createNewWidget()">
+            Create New Widget
           </button>
-          <button
-            class="btn btn-secondary"
-            onclick="window.chatWidgetInstance?.close()"
-          >
-            Close Chat
+          <button class="btn btn-secondary" onclick="createLeftWidget()">
+            Create Left Widget
           </button>
-          <button
-            class="btn btn-secondary"
-            onclick="window.chatWidgetInstance?.clearHistory()"
-          >
-            Clear History
+          <button class="btn btn-secondary" onclick="clearLocalStorage()">
+            Clear Stored Messages
           </button>
         </div>
       </div>
 
       <div class="demo-section">
         <h2>📋 Basic Integration</h2>
-        <p>Add this single line to your website to embed the chat widget:</p>
+        <p>Add the ES module script to your website:</p>
         <div class="code-block">
-          &lt;script src="https://your-domain.com/chat-widget.umd.js"
-          data-auto-load="true"&gt;&lt;/script&gt;
+          &lt;script type="module"&gt; import { ChatWidget } from
+          'https://cw-vanilla.pages.dev/chat-widget.js'; ChatWidget.init({
+          title: 'Support Chat' }); &lt;/script&gt;
         </div>
       </div>
 
       <div class="demo-section">
         <h2>⚙️ Advanced Configuration</h2>
-        <p>Customize the widget with data attributes:</p>
+        <p>Customize the widget with full configuration:</p>
         <div class="code-block">
-          &lt;script src="https://your-domain.com/chat-widget.umd.js"
-          data-auto-load="true" data-title="Customer Support"
-          data-primary-color="#10b981" data-position="bottom-left"
-          data-api-endpoint="https://api.example.com/chat"
-          data-welcome-message="Hi! How can I help you today?"
-          data-placeholder="Ask me anything..." data-width="350"
-          data-height="500" &gt;&lt;/script&gt;
+          &lt;script type="module"&gt; import { ChatWidget } from
+          'https://cw-vanilla.pages.dev/chat-widget.js'; ChatWidget.init({
+          title: 'Customer Support', primaryColor: '#10b981', position:
+          'bottom-left', apiEndpoint: 'https://api.example.com/chat',
+          welcomeMessage: 'Hi! How can I help you today?', placeholder: 'Ask me
+          anything...', width: 350, height: 500 }); &lt;/script&gt;
         </div>
       </div>
 
@@ -211,12 +205,12 @@
         <h2>🛠️ JavaScript API</h2>
         <p>Control the widget programmatically:</p>
         <div class="code-block">
-          // Manual initialization const widget = new ChatWidget({ title:
-          'Support Chat', primaryColor: '#3b82f6', apiEndpoint:
-          'https://api.example.com/chat', position: 'bottom-right' }); //
-          Control methods widget.open(); // Open the chat widget.close(); //
-          Close the chat widget.clearHistory(); // Clear chat history
-          widget.destroy(); // Remove widget from DOM
+          &lt;script type="module"&gt; // Import and initialize import {
+          ChatWidget } from 'https://cw-vanilla.pages.dev/chat-widget.js'; const
+          widget = ChatWidget.init({ title: 'Support Chat', primaryColor:
+          '#3b82f6', position: 'bottom-right' }); // Widget is self-contained
+          with built-in controls // Users click the toggle button to open/close
+          // Message history is automatically persisted &lt;/script&gt;
         </div>
       </div>
 
@@ -230,10 +224,43 @@
           <li>Upload the <code>dist/</code> folder to Cloudflare Pages</li>
           <li>
             Your widget will be available at
-            <code>https://your-domain.pages.dev/chat-widget.umd.js</code>
+            <code>https://your-domain.pages.dev/chat-widget.js</code>
           </li>
-          <li>Include the script tag on any website to embed the widget</li>
+          <li>Use ES module import to embed the widget on any website</li>
+          <li>
+            Current live demo:
+            <code>https://cw-vanilla.pages.dev/chat-widget.js</code>
+          </li>
         </ol>
+      </div>
+
+      <div class="demo-section">
+        <h2>🔄 Alternative Loading Methods</h2>
+        <p>Multiple ways to integrate the widget:</p>
+
+        <h3>Method 1: Data Attributes (Auto-init)</h3>
+        <div class="code-block">
+          &lt;script type="module"
+          src="https://cw-vanilla.pages.dev/chat-widget.js"
+          data-auto-load="true" data-primary-color="#6366f1" data-title="Auto
+          Chat"&gt; &lt;/script&gt;
+        </div>
+
+        <h3>Method 2: Dynamic Import</h3>
+        <div class="code-block">
+          &lt;script type="module"&gt; const { ChatWidget } = await
+          import('https://cw-vanilla.pages.dev/chat-widget.js');
+          ChatWidget.init({ title: 'Dynamic Chat' }); &lt;/script&gt;
+        </div>
+
+        <h3>Method 3: Async Script Loading</h3>
+        <div class="code-block">
+          &lt;script&gt; const script = document.createElement('script');
+          script.type = 'module'; script.src =
+          'https://cw-vanilla.pages.dev/chat-widget.js'; script.onload = ()
+          =&gt; window.ChatWidget.init({ title: 'Async Chat' });
+          document.head.appendChild(script); &lt;/script&gt;
+        </div>
       </div>
 
       <footer
@@ -245,10 +272,49 @@
           color: #6b7280;
         "
       >
-        <p>Built with TypeScript, Vite, and ❤️</p>
+        <p>
+          Built with TypeScript, Vite, and ❤️ • File Size: 19.25 kB (5.14 kB
+          gzipped)
+        </p>
       </footer>
     </div>
 
     <script type="module" src="/src/main.ts"></script>
+
+    <script>
+      // Demo functions for the buttons
+      async function createNewWidget() {
+        const { ChatWidget } = await import("/src/ChatWidget.ts");
+        ChatWidget.init({
+          primaryColor: "#10b981",
+          title: "New Demo Widget",
+          position: "bottom-right",
+          welcomeMessage: "This is a newly created widget!",
+        });
+      }
+
+      async function createLeftWidget() {
+        const { ChatWidget } = await import("/src/ChatWidget.ts");
+        ChatWidget.init({
+          primaryColor: "#f59e0b",
+          title: "Left Widget",
+          position: "bottom-left",
+          width: 300,
+          height: 400,
+          welcomeMessage: "I'm positioned on the left!",
+        });
+      }
+
+      function clearLocalStorage() {
+        // Clear all chat widget related localStorage
+        const keys = Object.keys(localStorage);
+        keys.forEach((key) => {
+          if (key.startsWith("chat-widget-")) {
+            localStorage.removeItem(key);
+          }
+        });
+        alert("Stored messages cleared! Refresh the page to see the effect.");
+      }
+    </script>
   </body>
 </html>
