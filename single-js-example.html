@@ -39,7 +39,7 @@
         color: #e2e8f0;
         padding: 16px;
         border-radius: 6px;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
         font-size: 14px;
         overflow-x: auto;
         margin: 10px 0;
@@ -56,9 +56,11 @@
     <div class="container">
       <div class="header">
         <h1>🚀 Single JS File Chat Widget</h1>
-        <p>Everything bundled into one JavaScript file - no separate CSS needed!</p>
+        <p>
+          Everything bundled into one JavaScript file - no separate CSS needed!
+        </p>
       </div>
-      
+
       <div class="highlight">
         <strong>✨ Key Features:</strong>
         <ul>
@@ -69,86 +71,60 @@
           <li>Multiple loading methods</li>
         </ul>
       </div>
-      
+
       <h2>📦 Basic Usage</h2>
       <div class="embed-example">
         <h3>Method 1: Simple Script Tag</h3>
         <div class="code">
-&lt;!-- Just one script tag - that's it! --&gt;
-&lt;script src="https://your-domain.pages.dev/chat-widget.umd.cjs"&gt;&lt;/script&gt;
-
-&lt;script&gt;
-  // Initialize the widget
-  window.ChatWidget.init({
-    primaryColor: '#3b82f6',
-    title: 'Support Chat',
-    placeholder: 'Type your message...',
-    position: 'bottom-right',
-    width: 350,
-    height: 500,
-    welcomeMessage: 'Hello! How can I help you today? 👋'
-  });
-&lt;/script&gt;
+          &lt;!-- Just one script tag - that's it! --&gt; &lt;script
+          src="https://your-domain.pages.dev/chat-widget.umd.cjs"&gt;&lt;/script&gt;
+          &lt;script&gt; // Initialize the widget window.ChatWidget.init({
+          primaryColor: '#3b82f6', title: 'Support Chat', placeholder: 'Type
+          your message...', position: 'bottom-right', width: 350, height: 500,
+          welcomeMessage: 'Hello! How can I help you today? 👋' });
+          &lt;/script&gt;
         </div>
       </div>
-      
+
       <div class="embed-example">
         <h3>Method 2: Auto-initialization</h3>
         <div class="code">
-&lt;!-- Auto-initialize with data attributes --&gt;
-&lt;script 
-  src="https://your-domain.pages.dev/chat-widget.umd.cjs" 
-  data-auto-load="true"
-  data-primary-color="#6366f1"
-  data-title="Support Chat"
-  data-placeholder="Ask us anything..."
-  data-position="bottom-right"
-  data-width="350"
-  data-height="500"
-  data-welcome-message="Welcome! How can we help you?"&gt;
-&lt;/script&gt;
+          &lt;!-- Auto-initialize with data attributes --&gt; &lt;script
+          src="https://your-domain.pages.dev/chat-widget.umd.cjs"
+          data-auto-load="true" data-primary-color="#6366f1" data-title="Support
+          Chat" data-placeholder="Ask us anything..."
+          data-position="bottom-right" data-width="350" data-height="500"
+          data-welcome-message="Welcome! How can we help you?"&gt;
+          &lt;/script&gt;
         </div>
       </div>
-      
+
       <div class="embed-example">
         <h3>Method 3: Async Loading</h3>
         <div class="code">
-&lt;script&gt;
-  // Load widget asynchronously
-  (function() {
-    const script = document.createElement('script');
-    script.src = 'https://your-domain.pages.dev/chat-widget.umd.cjs';
-    script.async = true;
-    script.onload = function() {
-      window.ChatWidget.init({
-        primaryColor: '#10b981',
-        title: 'Async Chat',
-        position: 'bottom-left'
-      });
-    };
-    document.head.appendChild(script);
-  })();
-&lt;/script&gt;
+          &lt;script&gt; // Load widget asynchronously (function() { const
+          script = document.createElement('script'); script.src =
+          'https://your-domain.pages.dev/chat-widget.umd.cjs'; script.async =
+          true; script.onload = function() { window.ChatWidget.init({
+          primaryColor: '#10b981', title: 'Async Chat', position: 'bottom-left'
+          }); }; document.head.appendChild(script); })(); &lt;/script&gt;
         </div>
       </div>
-      
+
       <h2>🎨 Configuration Options</h2>
       <div class="embed-example">
         <div class="code">
-window.ChatWidget.init({
-  apiEndpoint: 'https://your-api.com/chat',    // Optional API endpoint
-  title: 'Support Chat',                       // Widget title
-  placeholder: 'Type your message...',         // Input placeholder
-  primaryColor: '#3b82f6',                     // Theme color
-  position: 'bottom-right',                    // 'bottom-right' | 'bottom-left'
-  width: 350,                                  // Widget width in pixels
-  height: 500,                                 // Widget height in pixels
-  welcomeMessage: 'Hello! How can I help?',    // Optional welcome message
-  containerElement: document.body              // Container element (optional)
-});
+          window.ChatWidget.init({ apiEndpoint: 'https://your-api.com/chat', //
+          Optional API endpoint title: 'Support Chat', // Widget title
+          placeholder: 'Type your message...', // Input placeholder
+          primaryColor: '#3b82f6', // Theme color position: 'bottom-right', //
+          'bottom-right' | 'bottom-left' width: 350, // Widget width in pixels
+          height: 500, // Widget height in pixels welcomeMessage: 'Hello! How
+          can I help?', // Optional welcome message containerElement:
+          document.body // Container element (optional) });
         </div>
       </div>
-      
+
       <h2>📊 File Size</h2>
       <div class="embed-example">
         <p><strong>Total bundle size:</strong> 15.55 kB (4.71 kB gzipped)</p>
@@ -162,23 +138,27 @@ window.ChatWidget.init({
           <li>Auto-initialization logic</li>
         </ul>
       </div>
-      
-      <p>The chat widget will appear in the bottom-right corner when this page loads. Try clicking it to test!</p>
+
+      <p>
+        The chat widget will appear in the bottom-right corner when this page
+        loads. Try clicking it to test!
+      </p>
     </div>
 
     <!-- Load our single JS file -->
     <script src="./dist/chat-widget.umd.cjs"></script>
-    
+
     <script>
       // Initialize the widget
       window.ChatWidget.init({
-        primaryColor: '#8b5cf6',
-        title: 'Demo Chat',
-        placeholder: 'Try the single JS file widget...',
-        position: 'bottom-right',
+        primaryColor: "#8b5cf6",
+        title: "Demo Chat",
+        placeholder: "Try the single JS file widget...",
+        position: "bottom-right",
         width: 350,
         height: 500,
-        welcomeMessage: 'Hi! This entire widget is loaded from a single 15.55 kB JavaScript file! 🎉'
+        welcomeMessage:
+          "Hi! This entire widget is loaded from a single 15.55 kB JavaScript file! 🎉",
       });
     </script>
   </body>

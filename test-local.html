@@ -56,7 +56,7 @@
         <h1>Chat Widget Test</h1>
         <p>Testing the local chat widget with proper styling</p>
       </div>
-      
+
       <h2>Features:</h2>
       <ul class="feature-list">
         <li>Clean, modern design</li>
@@ -66,23 +66,26 @@
         <li>Local storage for message persistence</li>
         <li>Mock API responses</li>
       </ul>
-      
-      <p>The chat widget should appear in the bottom-right corner. Click it to test the functionality!</p>
+
+      <p>
+        The chat widget should appear in the bottom-right corner. Click it to
+        test the functionality!
+      </p>
     </div>
 
     <!-- Load the built chat widget - Single JS file with everything bundled -->
     <script src="./dist/chat-widget.umd.cjs"></script>
-    
+
     <script>
       // Initialize the chat widget with custom configuration
       window.ChatWidget.init({
-        primaryColor: '#6366f1',
-        title: 'Support Chat',
-        placeholder: 'Type your message...',
-        position: 'bottom-right',
+        primaryColor: "#6366f1",
+        title: "Support Chat",
+        placeholder: "Type your message...",
+        position: "bottom-right",
         width: 350,
         height: 500,
-        welcomeMessage: 'Hello! How can I help you today? 👋'
+        welcomeMessage: "Hello! How can I help you today? 👋",
       });
     </script>
   </body>
