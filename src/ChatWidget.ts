@@ -12,7 +12,6 @@ export class ChatWidget {
   private isOpen = false;
   private api: ChatWidgetAPI | null = null;
 
-
   constructor(config: ChatWidgetConfig = {}) {
     this.config = {
       apiEndpoint: config.apiEndpoint || "",
@@ -62,8 +61,6 @@ export class ChatWidget {
     return new ChatWidget(config);
   }
 
-
-
   private initializeAPI(): void {
     if (this.config.apiEndpoint) {
       this.api = {
@@ -96,9 +93,7 @@ export class ChatWidget {
     // Create chat widget container
     this.widget = document.createElement("div");
     this.widget.className = `chat-widget ${
-      this.config.position === "bottom-right"
-        ? "bottom-right"
-        : "bottom-left"
+      this.config.position === "bottom-right" ? "bottom-right" : "bottom-left"
     }`;
     this.widget.style.cssText = `
       --primary-color: ${this.config.primaryColor};

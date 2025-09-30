@@ -15,6 +15,7 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
 ## 📦 Quick Start
 
 ### Method 1: Basic Usage
+
 ```html
 <!-- Single script tag -->
 <script src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"></script>
@@ -22,22 +23,23 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
 <script>
   // Initialize the widget
   window.ChatWidget.init({
-    primaryColor: '#3b82f6',
-    title: 'Support Chat',
-    placeholder: 'Type your message...',
-    position: 'bottom-right',
+    primaryColor: "#3b82f6",
+    title: "Support Chat",
+    placeholder: "Type your message...",
+    position: "bottom-right",
     width: 350,
     height: 500,
-    welcomeMessage: 'Hello! How can I help you today? 👋'
+    welcomeMessage: "Hello! How can I help you today? 👋",
   });
 </script>
 ```
 
 ### Method 2: Auto-initialization
+
 ```html
 <!-- Configure via data attributes -->
-<script 
-  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs" 
+<script
+  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
   data-auto-load="true"
   data-primary-color="#6366f1"
   data-title="Support Chat"
@@ -45,23 +47,24 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
   data-position="bottom-right"
   data-width="350"
   data-height="500"
-  data-welcome-message="Welcome! How can we help you?">
-</script>
+  data-welcome-message="Welcome! How can we help you?"
+></script>
 ```
 
 ### Method 3: Async Loading
+
 ```html
 <script>
   // Load widget asynchronously
-  (function() {
-    const script = document.createElement('script');
-    script.src = 'https://cw-vanilla.pages.dev/chat-widget.umd.cjs';
+  (function () {
+    const script = document.createElement("script");
+    script.src = "https://cw-vanilla.pages.dev/chat-widget.umd.cjs";
     script.async = true;
-    script.onload = function() {
+    script.onload = function () {
       window.ChatWidget.init({
-        primaryColor: '#10b981',
-        title: 'Async Chat',
-        position: 'bottom-left'
+        primaryColor: "#10b981",
+        title: "Async Chat",
+        position: "bottom-left",
       });
     };
     document.head.appendChild(script);
@@ -73,15 +76,15 @@ A complete, embeddable chat widget bundled into a single JavaScript file with no
 
 ```javascript
 window.ChatWidget.init({
-  apiEndpoint: 'https://your-api.com/chat',    // Optional API endpoint
-  title: 'Support Chat',                       // Widget title
-  placeholder: 'Type your message...',         // Input placeholder
-  primaryColor: '#3b82f6',                     // Theme color
-  position: 'bottom-right',                    // 'bottom-right' | 'bottom-left'
-  width: 350,                                  // Widget width in pixels
-  height: 500,                                 // Widget height in pixels
-  welcomeMessage: 'Hello! How can I help?',    // Optional welcome message
-  containerElement: document.body              // Container element (optional)
+  apiEndpoint: "https://your-api.com/chat", // Optional API endpoint
+  title: "Support Chat", // Widget title
+  placeholder: "Type your message...", // Input placeholder
+  primaryColor: "#3b82f6", // Theme color
+  position: "bottom-right", // 'bottom-right' | 'bottom-left'
+  width: 350, // Widget width in pixels
+  height: 500, // Widget height in pixels
+  welcomeMessage: "Hello! How can I help?", // Optional welcome message
+  containerElement: document.body, // Container element (optional)
 });
 ```
 
@@ -102,7 +105,7 @@ For auto-initialization, you can use these data attributes:
 ## 📊 Bundle Details
 
 - **Total Size**: 15.55 kB (4.71 kB gzipped)
-- **Includes**: 
+- **Includes**:
   - Complete TypeScript chat functionality
   - All CSS styles (4.39 kB)
   - Smooth animations and transitions
@@ -114,6 +117,7 @@ For auto-initialization, you can use these data attributes:
 ## 🚀 Deployment
 
 The widget is deployed to Cloudflare Pages at:
+
 ```
 https://cw-vanilla.pages.dev/chat-widget.umd.cjs
 ```
@@ -137,26 +141,28 @@ https://cw-vanilla.pages.dev/chat-widget.umd.cjs
 ## 🌟 Advanced Usage
 
 ### Multiple Widgets
+
 ```javascript
 // Create multiple chat widgets with different configurations
 window.ChatWidget.init({
-  primaryColor: '#e74c3c',
-  title: 'Sales',
-  position: 'bottom-right'
+  primaryColor: "#e74c3c",
+  title: "Sales",
+  position: "bottom-right",
 });
 
 window.ChatWidget.init({
-  primaryColor: '#2ecc71',
-  title: 'Support',
-  position: 'bottom-left'
+  primaryColor: "#2ecc71",
+  title: "Support",
+  position: "bottom-left",
 });
 ```
 
 ### Programmatic Control
+
 ```javascript
 // Initialize and store reference
 const widget = window.ChatWidget.init({
-  title: 'Customer Service'
+  title: "Customer Service",
 });
 
 // The widget handles its own state

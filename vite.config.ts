@@ -13,7 +13,7 @@ export default defineConfig({
         inlineDynamicImports: true,
         // No separate CSS file, everything inlined into JS
         assetFileNames: () => {
-          return '[name].[hash][extname]';
+          return "[name].[hash][extname]";
         },
       },
     },
