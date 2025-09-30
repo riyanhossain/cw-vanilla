@@ -21,9 +21,28 @@ function autoInit() {
   window.ChatWidget = ChatWidget;
 
   // Look for auto-initialization via script tag data attributes
-  const script = document.querySelector(
-    'script[src*="chat-widget"]'
-  ) as HTMLScriptElement;
+  // Search for various script patterns to handle different CDN URLs
+  const scriptSelectors = [
+    'script[src*="chat-widget"]',
+    'script[data-chat-widget]',
+    'script[src*="cw-vanilla.pages.dev"]'
+  ];
+  
+  let script: HTMLScriptElement | null = null;
+  for (const selector of scriptSelectors) {
+    script = document.querySelector(selector) as HTMLScriptElement;
+    if (script) break;
+  }
+  
+  // Also try to find the current script by looking at all scripts
+  if (!script) {
+    const scripts = document.querySelectorAll('script[src]');
+    script = Array.from(scripts).find(s => 
+      s.getAttribute('src')?.includes('chat-widget') ||
+      s.getAttribute('src')?.includes('cw-vanilla.pages.dev') ||
+      s.hasAttribute('data-auto-load')
+    ) as HTMLScriptElement;
+  }
 
   if (script) {
     const autoLoad = script.getAttribute("data-auto-load");

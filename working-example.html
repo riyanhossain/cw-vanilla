@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget - Working Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .status {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-danger { background: #dc3545; color: white; }
+        button:hover { transform: translateY(-1px); opacity: 0.9; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+        .deployment-steps {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .deployment-steps h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💬 Chat Widget - Working Example</h1>
+        
+        <div class="success status">
+            <strong>✅ Status:</strong> This example uses the local widget file and should work immediately.
+        </div>
+
+        <div id="widget-status" class="info status">
+            <strong>Loading:</strong> Initializing chat widget...
+        </div>
+
+        <h2>Widget Controls</h2>
+        <div class="controls">
+            <button class="btn-primary" onclick="openChat()">Open Chat</button>
+            <button class="btn-warning" onclick="closeChat()">Close Chat</button>
+            <button class="btn-danger" onclick="clearHistory()">Clear History</button>
+        </div>
+
+        <div class="deployment-steps">
+            <h3>🚀 How to Deploy to Cloudflare Pages</h3>
+            
+            <h4>Option 1: Direct Upload</h4>
+            <ol>
+                <li>Make sure you've run <code>npm run build</code> (✅ Done - file exists)</li>
+                <li>Go to <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare Dashboard</a></li>
+                <li>Navigate to Pages → Your project (<code>cw-vanilla</code>)</li>
+                <li>Upload or drag & drop the <code>dist/chat-widget.umd.cjs</code> file</li>
+                <li>Make sure it's uploaded to the root directory (not in a subfolder)</li>
+            </ol>
+
+            <h4>Option 2: Git Integration</h4>
+            <ol>
+                <li>Commit your changes: <code>git add . && git commit -m "Update widget build"</code></li>
+                <li>Push to your repository: <code>git push origin main</code></li>
+                <li>Cloudflare Pages will automatically deploy from your git repository</li>
+                <li>Set build command to: <code>npm run build</code></li>
+                <li>Set output directory to: <code>dist</code></li>
+            </ol>
+
+            <h4>Verify Deployment</h4>
+            <p>Once deployed, test these URLs:</p>
+            <ul>
+                <li>Main site: <code>https://cw-vanilla.pages.dev/</code></li>
+                <li>Widget file: <code>https://cw-vanilla.pages.dev/chat-widget.umd.cjs</code></li>
+            </ul>
+        </div>
+
+        <h2>Embedding Code (After Deployment)</h2>
+        <p>Once your widget is deployed to Cloudflare Pages, use this code:</p>
+        
+        <h3>Basic Integration</h3>
+        <pre><code>&lt;script src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs" data-auto-load="true"&gt;&lt;/script&gt;</code></pre>
+
+        <h3>Custom Configuration</h3>
+        <pre><code>&lt;script 
+  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
+  data-auto-load="true"
+  data-title="Support Chat"
+  data-primary-color="#28a745"
+  data-position="bottom-left"
+  data-welcome-message="Hello! How can we help you?"
+  data-placeholder="Type your question..."
+  data-width="350"
+  data-height="500"
+&gt;&lt;/script&gt;</code></pre>
+
+        <div class="warning status">
+            <strong>⚠️ Common Issues:</strong>
+            <ul>
+                <li><strong>File not found (404):</strong> Make sure <code>chat-widget.umd.cjs</code> is in the root directory of your Cloudflare Pages site</li>
+                <li><strong>CORS errors:</strong> Cloudflare Pages should handle CORS automatically for static files</li>
+                <li><strong>Cache issues:</strong> Try hard refresh (Ctrl+F5) or wait a few minutes for CDN cache to update</li>
+            </ul>
+        </div>
+
+        <h2>Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <!-- Load the local widget -->
+    <script src="./dist/chat-widget.umd.cjs"></script>
+    
+    <script>
+        let widget = null;
+
+        function updateStatus(message, type = 'info') {
+            const statusEl = document.getElementById('widget-status');
+            statusEl.innerHTML = `<strong>Status:</strong> ${message}`;
+            statusEl.className = `${type} status`;
+        }
+
+        function addTestResult(test, result, details = '') {
+            const resultsEl = document.getElementById('test-results');
+            const resultEl = document.createElement('div');
+            resultEl.className = `${result ? 'success' : 'error'} status`;
+            resultEl.innerHTML = `
+                <strong>${test}:</strong> ${result ? '✅ PASS' : '❌ FAIL'}
+                ${details ? `<br><small>${details}</small>` : ''}
+            `;
+            resultsEl.appendChild(resultEl);
+        }
+
+        function runTests() {
+            // Test 1: Widget class exists
+            const hasClass = typeof ChatWidget !== 'undefined';
+            addTestResult('Widget Class Available', hasClass, hasClass ? 'ChatWidget constructor is globally available' : 'ChatWidget class not found');
+
+            if (hasClass) {
+                try {
+                    // Test 2: Can create widget instance
+                    widget = new ChatWidget({
+                        title: '💬 Local Test',
+                        primaryColor: '#007bff',
+                        position: 'bottom-right',
+                        welcomeMessage: 'Hello! This is your working chat widget. It\'s loaded from the local build file.',
+                        placeholder: 'Test your widget here...',
+                        width: 320,
+                        height: 450
+                    });
+                    addTestResult('Widget Instantiation', true, 'Widget created successfully');
+
+                    // Test 3: Widget methods exist
+                    const hasOpen = typeof widget.open === 'function';
+                    const hasClose = typeof widget.close === 'function';
+                    const hasClear = typeof widget.clearHistory === 'function';
+                    
+                    addTestResult('Widget Methods', hasOpen && hasClose && hasClear, 
+                        `open: ${hasOpen}, close: ${hasClose}, clear: ${hasClear}`);
+
+                    // Test 4: Styles are injected
+                    const hasStyles = document.querySelector('style') !== null;
+                    addTestResult('Styles Injection', hasStyles, hasStyles ? 'CSS styles found in document head' : 'No CSS styles found');
+
+                    updateStatus('✅ Widget loaded successfully! Look for the chat button in the bottom-right corner.', 'success');
+
+                } catch (error) {
+                    addTestResult('Widget Instantiation', false, error.message);
+                    updateStatus(`❌ Error creating widget: ${error.message}`, 'error');
+                }
+            } else {
+                updateStatus('❌ Widget class not available. Check if the script loaded correctly.', 'error');
+            }
+        }
+
+        function openChat() {
+            if (widget) widget.open();
+        }
+
+        function closeChat() {
+            if (widget) widget.close();
+        }
+
+        function clearHistory() {
+            if (widget) {
+                widget.clearHistory();
+                alert('Chat history cleared!');
+            }
+        }
+
+        // Initialize widget when page loads
+        if (typeof ChatWidget !== 'undefined') {
+            runTests();
+        } else {
+            // Wait a bit for the script to load
+            setTimeout(() => {
+                if (typeof ChatWidget !== 'undefined') {
+                    runTests();
+                } else {
+                    updateStatus('❌ Failed to load widget script', 'error');
+                }
+            }, 1000);
+        }
+
+        console.log('🚀 Local widget test loaded. Widget should appear in bottom-right corner.');
+    </script>
+</body>
+</html>

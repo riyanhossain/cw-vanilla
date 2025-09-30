@@ -11,10 +11,47 @@ A lightweight, customizable chat widget that can be embedded into any website wi
 Add this single line to your HTML:
 
 ```html
-<script
-  src="https://your-domain.pages.dev/chat-widget.umd.js"
+## 🚀 Quick Start
+
+### Simple Integration
+
+Add this single line to your HTML:
+
+```html
+**Simple embedding:**
+```html
+<script src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs" data-auto-load="true"></script>
+```
+
+**With customization:**
+```html
+<script 
+  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
   data-auto-load="true"
+  data-title="Support Chat"
+  data-primary-color="#28a745"
+  data-api-endpoint="https://api.example.com/chat"
+  data-welcome-message="How can I help you?"
 ></script>
+```
+```
+
+### Custom Configuration
+
+```html
+<script 
+  src="https://cw-vanilla.pages.dev/chat-widget.umd.cjs"
+  data-auto-load="true"
+  data-title="Customer Support"
+  data-primary-color="#10b981"
+  data-position="bottom-left"
+  data-api-endpoint="https://api.example.com/chat"
+  data-welcome-message="Hi! How can I help you today?"
+  data-placeholder="Ask me anything..."
+  data-width="350"
+  data-height="500"
+></script>
+```
 ```
 
 ### Custom Configuration
